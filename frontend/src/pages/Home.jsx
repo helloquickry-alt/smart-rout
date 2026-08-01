@@ -41,12 +41,51 @@ function weatherLabelFor(code) {
   return "—";
 }
 
-function previewBusDot() {
+// Real bus icon marker (inline SVG) instead of plain round dot — with subtle pulse to feel "live"
+function busMarkerIcon(heading = 0) {
   return L.divIcon({
     className: "",
-    html: `<div style="width: 12px; height: 12px; background: #6C5DD3; border: 2px solid white; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.3);"></div>`,
-    iconSize: [12, 12],
-    iconAnchor: [6, 6],
+    html: `
+      <div style="position: relative; width: 30px; height: 30px;">
+        <div style="
+          position: absolute;
+          inset: 0;
+          border-radius: 50%;
+          background: #6C5DD3;
+          opacity: 0.25;
+          animation: busPulse 1.6s ease-out infinite;
+        "></div>
+        <div style="
+          position: relative;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background: #6C5DD3;
+          border: 2px solid white;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transform: rotate(${heading}deg);
+          transition: transform 0.5s linear;
+        ">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 6v6"/><path d="M15 6v6"/><path d="M2 12h19.6"/>
+            <path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3"/>
+            <circle cx="7" cy="18" r="2"/><path d="M9 18h5"/><circle cx="16" cy="18" r="2"/>
+          </svg>
+        </div>
+      </div>
+      <style>
+        @keyframes busPulse {
+          0% { transform: scale(0.8); opacity: 0.35; }
+          70% { transform: scale(1.8); opacity: 0; }
+          100% { transform: scale(1.8); opacity: 0; }
+        }
+      </style>
+    `,
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
   });
 }
 
@@ -245,7 +284,7 @@ function Home() {
             >
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               {buses.map((bus) => (
-                <Marker key={bus.id} position={[bus.lat, bus.lng]} icon={previewBusDot()} />
+                <Marker key={bus.id} position={[bus.lat, bus.lng]} icon={busMarkerIcon(bus.heading || 0)} />
               ))}
             </MapContainer>
           </div>
