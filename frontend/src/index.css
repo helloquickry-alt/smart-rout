@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-bg: #f7f7f3;
+  --color-surface: #ffffff;
+  --color-ink: #13161f;
+  --color-ink-soft: #5c6072;
+  --color-ink-faint: #9497a6;
+  --color-line: #e6e6e0;
+
+  --color-accent: #1c5d4c;
+  --color-accent-deep: #0e3a2f;
+  --color-accent-soft: #e5f0ec;
+
+  --color-gold: #b68a35;
+  --color-gold-soft: #f5edda;
+
+  --color-live: #d6483a;
+  --color-live-soft: #fbeae7;
+
+  /* Fonts */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Animation */
+  --animate-flap-in: flap-in 0.35s ease;
+}
+
+@keyframes flap-in {
+  from {
+    opacity: 0;
+    transform: rotateX(40deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}

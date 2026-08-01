@@ -1,0 +1,175 @@
+smart-bus-admin-panel/
+│
+├── public/
+│   ├── icons/
+│   └── images/
+│
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── icons/
+│   │
+│   ├── firebase/                          # 🔥 FIREBASE CONFIG (same project as user app)
+│   │   ├── firebaseConfig.js
+│   │   ├── auth.js                        # admin login, 2FA (future)
+│   │   ├── firestore.js                   # buses, routes, stops, drivers, users refs
+│   │   ├── realtimeDb.js                  # live bus tracking, simulation state
+│   │   ├── storage.js                     # driver docs, report files
+│   │   └── functions.js                   # cloud functions (AI insights, reports)
+│   │
+│   ├── components/                        # COMMON COMPONENTS
+│   │   ├── Sidebar/
+│   │   ├── TopNavbar/
+│   │   ├── SearchBar/
+│   │   ├── DashboardCard/
+│   │   ├── DataTable/
+│   │   ├── ChartCard/
+│   │   ├── FilterBar/
+│   │   ├── Modal/
+│   │   ├── FormFields/
+│   │   ├── Button/
+│   │   ├── Toast/
+│   │   ├── Loader/
+│   │   ├── Pagination/
+│   │   ├── Calendar/
+│   │   └── ExportButtons/
+│   │
+│   ├── modules/                           # 18 ADMIN MODULES
+│   │   ├── 01-Authentication/
+│   │   │   ├── AdminLogin.jsx
+│   │   │   ├── ForgotPassword.jsx
+│   │   │   ├── ResetPassword.jsx
+│   │   │   └── TwoFactorAuth.jsx          # future
+│   │   │
+│   │   ├── 02-Dashboard/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── StatsOverview.jsx          # total buses/routes/drivers/users
+│   │   │   ├── SystemStatus.jsx
+│   │   │   ├── QuickActions.jsx
+│   │   │   └── RecentActivity.jsx
+│   │   │
+│   │   ├── 03-LiveMonitoring/
+│   │   │   ├── LiveMap.jsx
+│   │   │   ├── BusStatusList.jsx
+│   │   │   ├── FilterByRoute.jsx
+│   │   │   └── SearchBus.jsx
+│   │   │
+│   │   ├── 04-BusManagement/
+│   │   │   ├── BusList.jsx
+│   │   │   ├── AddBus.jsx
+│   │   │   ├── EditBus.jsx
+│   │   │   ├── BusDetails.jsx
+│   │   │   └── AssignDriverRoute.jsx
+│   │   │
+│   │   ├── 05-RouteManagement/
+│   │   │   ├── RouteList.jsx
+│   │   │   ├── AddRoute.jsx
+│   │   │   ├── EditRoute.jsx
+│   │   │   └── RouteDetails.jsx
+│   │   │
+│   │   ├── 06-BusStopManagement/
+│   │   │   ├── StopList.jsx
+│   │   │   ├── AddStop.jsx
+│   │   │   ├── EditStop.jsx
+│   │   │   └── StopDetails.jsx            # GPS picker, connected routes
+│   │   │
+│   │   ├── 07-DriverManagement/
+│   │   │   ├── DriverList.jsx
+│   │   │   ├── AddDriver.jsx
+│   │   │   ├── EditDriver.jsx
+│   │   │   └── DriverDetails.jsx
+│   │   │
+│   │   ├── 08-PassengerManagement/
+│   │   │   ├── UserList.jsx
+│   │   │   ├── UserProfile.jsx
+│   │   │   └── UserHistory.jsx
+│   │   │
+│   │   ├── 09-TripManagement/
+│   │   │   ├── ActiveTrips.jsx
+│   │   │   ├── CompletedTrips.jsx
+│   │   │   ├── CancelledTrips.jsx
+│   │   │   └── TripDetails.jsx
+│   │   │
+│   │   ├── 10-SimulationControl/
+│   │   │   ├── SimulationPanel.jsx        # start/stop/pause/resume
+│   │   │   ├── SpeedControl.jsx
+│   │   │   ├── TrafficControl.jsx
+│   │   │   ├── DelayControl.jsx
+│   │   │   └── OccupancyControl.jsx
+│   │   │
+│   │   ├── 11-Analytics/
+│   │   │   ├── TripsAnalytics.jsx
+│   │   │   ├── RoutePerformance.jsx
+│   │   │   ├── BusUtilization.jsx
+│   │   │   ├── PeakHours.jsx
+│   │   │   └── DelayAnalysis.jsx
+│   │   │
+│   │   ├── 12-Reports/
+│   │   │   ├── ReportsList.jsx
+│   │   │   ├── GenerateReport.jsx
+│   │   │   ├── ExportPDF.js
+│   │   │   ├── ExportExcel.js
+│   │   │   └── ExportCSV.js
+│   │   │
+│   │   ├── 13-Notifications/
+│   │   │   ├── SendNotification.jsx
+│   │   │   ├── NotificationHistory.jsx
+│   │   │   └── AlertTemplates.jsx
+│   │   │
+│   │   ├── 14-AIInsights/
+│   │   │   ├── AIInsightsDashboard.jsx
+│   │   │   ├── DelayPrediction.jsx
+│   │   │   ├── TrafficPrediction.jsx
+│   │   │   └── RouteOptimization.jsx      # cloud function calls
+│   │   │
+│   │   ├── 15-Settings/
+│   │   │   ├── CitySettings.jsx
+│   │   │   ├── TransportSettings.jsx
+│   │   │   ├── NotificationSettings.jsx
+│   │   │   └── SystemPreferences.jsx
+│   │   │
+│   │   ├── 16-RolePermission/
+│   │   │   ├── RoleList.jsx
+│   │   │   ├── AssignRole.jsx
+│   │   │   └── PermissionMatrix.jsx
+│   │   │
+│   │   ├── 17-ActivityLogs/
+│   │   │   ├── LoginHistory.jsx
+│   │   │   ├── UpdateLogs.jsx
+│   │   │   └── ErrorLogs.jsx
+│   │   │
+│   │   └── 18-SystemHealth/
+│   │       ├── FirebaseStatus.jsx
+│   │       ├── SimulationStatus.jsx
+│   │       ├── DatabaseStatus.jsx
+│   │       └── APIStatus.jsx
+│   │
+│   ├── layouts/
+│   │   └── AdminLayout.jsx                # Sidebar + TopNavbar wrapper
+│   │
+│   ├── routes/
+│   │   ├── AdminRoutes.jsx
+│   │   └── ProtectedAdminRoute.jsx        # role-based route guard
+│   │
+│   ├── context/
+│   │   ├── AdminAuthContext.jsx
+│   │   ├── RoleContext.jsx                # super admin / route manager / operator etc
+│   │   └── ThemeContext.jsx
+│   │
+│   ├── hooks/
+│   │   ├── useAdminAuth.js
+│   │   ├── useLiveBuses.js
+│   │   ├── useSimulation.js
+│   │   └── useRolePermission.js
+│   │
+│   ├── utils/
+│   │   ├── reportGenerator.js
+│   │   ├── permissionsMap.js              # role -> allowed modules mapping
+│   │   └── constants.js
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── .env
+├── package.json
+└── README.md

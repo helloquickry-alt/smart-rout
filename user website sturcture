@@ -1,0 +1,134 @@
+smart-bus-user-app/
+│
+├── public/
+│   ├── icons/
+│   └── images/
+│
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── icons/
+│   │
+│   ├── firebase/                        # 🔥 FIREBASE CONFIG
+│   │   ├── firebaseConfig.js            # init app, auth, db, storage
+│   │   ├── auth.js                      # login/register/otp/google helper fns
+│   │   ├── firestore.js                 # firestore collection refs & CRUD helpers
+│   │   ├── realtimeDb.js                # live bus location read/write (Realtime DB)
+│   │   └── storage.js                   # profile pic / image upload helpers
+│   │
+│   ├── components/                      # COMMON COMPONENTS
+│   │   ├── Navbar/
+│   │   ├── BottomNavigation/
+│   │   ├── SearchBar/
+│   │   ├── FloatingActionButton/
+│   │   ├── BusCard/
+│   │   ├── RouteCard/
+│   │   ├── StopCard/
+│   │   ├── NotificationCard/
+│   │   ├── AICard/
+│   │   ├── LoadingSkeleton/
+│   │   ├── EmptyState/
+│   │   ├── ErrorState/
+│   │   ├── Toast/
+│   │   ├── Modal/
+│   │   ├── Popup/
+│   │   └── Loader/
+│   │
+│   ├── modules/                         # 15 MAIN MODULES
+│   │   ├── 01-Authentication/
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── GuestAccess.jsx
+│   │   │   ├── GoogleLogin.jsx          # firebase.auth GoogleAuthProvider
+│   │   │   ├── OtpLogin.jsx             # firebase phone auth (RecaptchaVerifier)
+│   │   │   ├── ForgotPassword.jsx       # sendPasswordResetEmail
+│   │   │   └── ResetPassword.jsx
+│   │   │
+│   │   ├── 02-Home/
+│   │   │   ├── Home.jsx
+│   │   │   ├── HeroBanner.jsx
+│   │   │   ├── QuickActions.jsx
+│   │   │   ├── EmergencyButton.jsx
+│   │   │   └── LatestUpdates.jsx        # firestore "updates" collection
+│   │   │
+│   │   ├── 03-LiveBusTracking/
+│   │   │   ├── LiveMap.jsx
+│   │   │   ├── BusMarker.jsx
+│   │   │   ├── TrackBus.jsx             # onValue() listener - Realtime DB
+│   │   │   └── mapUtils.js
+│   │   │
+│   │   ├── 04-RouteSearch/
+│   │   │   ├── RouteSearch.jsx
+│   │   │   ├── RouteList.jsx            # firestore "routes" collection
+│   │   │   ├── RouteDetails.jsx
+│   │   │   └── SwapLocation.jsx
+│   │   │
+│   │   ├── 05-BusSearch/
+│   │   │   ├── BusSearch.jsx            # firestore query (where/orderBy)
+│   │   │   ├── SearchSuggestions.jsx
+│   │   │   └── RecentSearch.jsx         # localStorage or firestore subcollection
+│   │   │
+│   │   ├── 06-BusDetails/
+│   │   │   └── BusDetails.jsx           # firestore "buses" doc + realtimeDb live speed
+│   │   │
+│   │   ├── 07-NearbyBus/
+│   │   │   └── NearbyBus.jsx            # geolocation + firestore geo query
+│   │   │
+│   │   ├── 08-NearbyBusStop/
+│   │   │   └── NearbyStops.jsx
+│   │   │
+│   │   ├── 09-AIRecommendation/
+│   │   │   └── AIRecommendation.jsx     # cloud function call (httpsCallable)
+│   │   │
+│   │   ├── 10-Notifications/
+│   │   │   └── Notifications.jsx        # firestore "notifications" + FCM
+│   │   │
+│   │   ├── 11-Favorites/
+│   │   │   └── Favorites.jsx            # users/{uid}/favorites subcollection
+│   │   │
+│   │   ├── 12-MyTrips/
+│   │   │   ├── CurrentTrip.jsx
+│   │   │   ├── UpcomingTrips.jsx
+│   │   │   ├── PreviousTrips.jsx
+│   │   │   └── TripDetails.jsx          # users/{uid}/trips subcollection
+│   │   │
+│   │   ├── 13-Profile/
+│   │   │   └── Profile.jsx              # firestore users doc + storage profile pic
+│   │   │
+│   │   ├── 14-Settings/
+│   │   │   └── Settings.jsx
+│   │   │
+│   │   └── 15-HelpSupport/
+│   │       ├── FAQ.jsx
+│   │       ├── ContactSupport.jsx
+│   │       ├── ReportProblem.jsx        # firestore "reports" collection
+│   │       └── Feedback.jsx
+│   │
+│   ├── layouts/
+│   │   └── MainLayout.jsx
+│   │
+│   ├── routes/
+│   │   ├── AppRoutes.jsx
+│   │   └── ProtectedRoute.jsx           # firebase auth guard
+│   │
+│   ├── context/
+│   │   ├── AuthContext.jsx              # onAuthStateChanged listener
+│   │   ├── LocationContext.jsx
+│   │   └── ThemeContext.jsx
+│   │
+│   ├── hooks/
+│   │   ├── useAuth.js
+│   │   ├── useGeolocation.js
+│   │   ├── useLiveTracking.js           # Realtime DB subscription hook
+│   │   └── useDebounce.js
+│   │
+│   ├── utils/
+│   │   ├── etaCalculator.js
+│   │   └── constants.js
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── .env                                 # VITE_FIREBASE_API_KEY etc.
+├── package.json
+└── README.md
